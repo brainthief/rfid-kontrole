@@ -78,7 +78,7 @@ void loop() {
   rfid.PCD_StopCrypto1();
          String readedKey = String(rfid.uid.uidByte[0], HEX) + String(rfid.uid.uidByte[1], HEX) + String(rfid.uid.uidByte[2], HEX) + String(rfid.uid.uidByte[3], HEX);
          Serial.println(readedKey);
-  if ( readedKey == "46218fab") {
+  if ( readedKey == "" || readedKey == "") {
          //Serial.println("Open");
          rele=!rele;
          digitalWrite(7, rele);       // sets the digital pin 13 on
