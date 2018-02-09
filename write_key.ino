@@ -51,6 +51,7 @@ void setup() {
     key.keyByte[i] = 0xFF;
   }
   pinMode(7, OUTPUT);
+  pinMode(6, OUTPUT);
  
 }
  
@@ -78,11 +79,13 @@ void loop() {
   rfid.PCD_StopCrypto1();
          String readedKey = String(rfid.uid.uidByte[0], HEX) + String(rfid.uid.uidByte[1], HEX) + String(rfid.uid.uidByte[2], HEX) + String(rfid.uid.uidByte[3], HEX);
          Serial.println(readedKey);
+         delay(100);
   if ( readedKey == "" || readedKey == "") {
          //Serial.println("Open");
          rele=!rele;
-         digitalWrite(7, rele);       // sets the digital pin 13 on
-         //delay(1000);                  // waits for a second
+         digitalWrite(7, rele);       
+         digitalWrite(6,rele);
+         delay(1000);                  // waits for a second
          //digitalWrite(7, LOW);        // sets the digital pin 13 off
          //delay(1000);
          //Serial.println(rfid.uid.uidByte[0], HEX);
